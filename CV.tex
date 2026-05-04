@@ -96,7 +96,7 @@
   \begin{tikzpicture}[remember picture, overlay] 
     \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
   \end{tikzpicture}%
-\centerline{\LARGE\bfseries{胡豆}} 
+\centerline{\LARGE\bfseries{王洁睿}} 
 
 \centerline{\normalsize{\faPhone\ 111-1111-1111 \quad \faEnvelopeO\ \href{mailto:3230100000@zju.edu.cn}{3230100000@zju.edu.cn}}} 
 
@@ -104,52 +104,74 @@
     
 \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ 教育背景}    
 \textbf{浙江大学} \hfill 2023.9 -- 至今\\[0.5em] % 标题和正文间加一点距离
-CC98烂坑挖掘工程与技术\quad 大二 
+计算机科学与技术（图灵班）\quad 大三 
+
 \begin{itemize}[nosep]
-    \item 相关课程：《烂坑挖掘及基础》、《高级挖坑技巧》、《烂坑数理统计》
+    \item 绩点: 4.2/4.3
+    \item 排名: 1/99
+    \item CET-4: 624
+    \item CET-6: 555
+    \item IELTS: 7.5
 \end{itemize}
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
 
+
+
+\projectsep
+
 % --- 第一个项目 ---
 % 将标题行末尾的 \\ 替换为 \titlebreak 命令
-\textbf{98烂坑风控与可视化作战平台} \hfill 2024.08 -- 至今 \titlebreak
-项目描述：为维护cc98社区的讨论纯度、净化“心灵之约”版块风气，本项目旨在对“烂坑”进行科学、严谨的量化分析，并引入\textbf{大语言模型(LLM)}对烂坑帖进行\textbf{自动化情感极性与“离谱指数”标注}。
-% 在 itemize 的选项中，使用 topsep=\intraProjectListTopSep 来控制上边距
+
+\textbf{TradeActor} \hfill 2026.3 -- 至今 \titlebreak
+项目描述：本项目面向\textbf{股票预测与组合策略学习}场景，旨在构建从多模态股票信号生成、VLM预测评估、策略教师标签构造到组合策略训练与回测验证的完整流程。项目以 \textbf{DOW-20} 股票为研究对象，结合历史价格图、数值摘要与新闻窗口生成预测样本，并训练基于 \textbf{Qwen} 的 Portfolio Policy，实现对每日 \textbf{cash + 20 stocks} 的目标仓位预测。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{数据与后端}：运用 \textbf{Go} 语言及 \textbf{GORM} 框架，实现对全站“烂坑”帖的7x24小时全天候\textbf{抓取}与\textbf{入库}(MySQL)。
-    \item \textbf{可视化前端}：采用原生 \textbf{HTML/CSS/JS} 构建了“烂坑”实时监控\textbf{作战大屏}。实现了坑主成分分析、挖坑热力图、年度烂坑王榜单等\textbf{可视化图表}，并通过 \textbf{AJAX} 异步刷新，确保数据洞察的实时性。
-    \item \textbf{核心产出}：全面掌握了从\textbf{数据采集、清洗、LLM标注到可视化分析}的“反烂坑”全链路技术。
+    \item \textbf{预测样本生成}：针对 \textbf{DOW-20} 股票，基于历史价格图、数值摘要与新闻窗口构造 rollout 样本，并调用 \textbf{Qwen/Gemini} 等模型生成结构化 \textbf{JSON} 信号，包括上涨概率、24日收益分位数、long/short/flat 交易倾向及置信度。
+    \item \textbf{VLM信号评估}：系统统计 \textbf{valid rate、5/10/24日方向准确率、概率误差、分位数覆盖率} 与 bias\_strength 分桶效果，验证 VLM 股票预测信号的有效性；实验发现整体信号偏弱，但高 bias\_strength 子集具备一定筛选价值。
+    \item \textbf{策略教师构造}：以未来 \textbf{5d/10d open return} 作为 lookahead oracle 主信号，并融合 VLM 的方向与置信度作为小权重修正，生成每日 \textbf{21维目标仓位}，用于构造组合策略训练标签。
+    \item \textbf{组合策略训练}：将 \textbf{Qwen3.5-0.8B} 作为组合状态 encoder，输入当前持仓与20只股票的 VLM JSON 信号，并在特殊 token \textbf{<PORTFOLIO\_DECISION>} 上接入 \textbf{FFN head}，直接输出21维 softmax 仓位；训练目标采用偏 \textbf{utility loss} 的形式，综合收益、换手成本与仓位变化成本。
+    \item \textbf{回测验证}：集成 \textbf{StockBench} 回测框架，实现 \textbf{qwen\_portfolio\_policy strategy}，支持加载训练好的 policy，在回测中按日预测目标仓位并生成买卖订单，完成从预测信号到组合交易策略的闭环验证。
+\end{itemize}
+
+
+\textbf{TimeThinkingLLM} \hfill 2025.9 -- 2026.1 \titlebreak
+项目描述：本项目面向\textbf{时间序列问答(Time-Series QA)}场景，旨在打通连续时序信号与自然语言逻辑推理之间的模态鸿沟。项目构建了基于\textbf{Temporal Encoder + LLM Backbone}的时序推理框架，引入\textbf{重构损失、VLM知识蒸馏与RLVR/GRPO强化学习}，提升大语言模型对趋势、异常、周期等时间序列模式的感知与推理能力。
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item \textbf{模型架构}：独立设计并实现了基于 \textbf{MLP-Mixer} 的\textbf{时序编码器}，融合 Token-Mixing、Channel-Mixing、统计特征注入与可学习位置编码，将连续时间序列映射到 \textbf{Qwen-3} 等大语言模型可理解的语义嵌入空间。
+    \item \textbf{模态对齐与训练}：设计了 \textbf{动态Embedding注入机制}，将时序特征无缝嵌入文本指令序列；同时引入基于 \textbf{Pearson Correlation} 的趋势感知重构损失，使模型在对齐过程中更关注序列形态与变化趋势，而非单点数值误差。
+    \item \textbf{推理能力增强}：构建了从\textbf{模态预训练、联合微调、CoT监督微调到GRPO强化学习}的四阶段训练流程，并利用 \textbf{VLM} 生成时序趋势分析、异常检测、周期判断等\textbf{链式推理数据}，增强模型的复杂时间序列推理能力。
+    \item \textbf{实验评估}：在 \textbf{ChatTS Eval A/B、TimeSeriesExam、MCQ} 等时间序列理解与推理基准上完成系统评测，并围绕编码器收敛、模型容量限制与CoT稳定性进行了深入误差分析，为后续数据扩展、VLM-as-a-Judge奖励建模和大模型骨干迁移提供实验依据。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目
 \projectsep
 
 % --- 第二个项目 ---
-\textbf{AIGC驱动的超进化自动挖坑机 (Agent)} \hfill 2025.02 -- 至今 \titlebreak
-项目描述：为探索心灵版规的边界，以及测试版主锁沉反应速度的极限，本项目基于\textbf{多智能体协作(MCP)与LLM}技术，开发了一款能\textbf{自主“挖坑”与“互坑”}的AI Agent。
+\textbf{CUARewarder} \hfill 2026.3 -- 2026.5 \titlebreak
+项目描述：本项目面向 \textbf{GUI Agent} 的轨迹评估与奖励建模场景，旨在将网页/桌面操作类任务的执行过程转化为可自动评估的 \textbf{judge/reward 信号}。项目以任务目标、截图序列、Agent 动作历史及可选推理说明为输入，结合 \textbf{VLM} 与多种 judge 后端，对 Agent 是否真实完成任务进行自动化判定，并生成结构化奖励结果，可用于 Agent 评测、Reward Modeling 及 RL 训练数据构建。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{并发与调度}：后端采用 \textbf{Go} 语言，充分利用 \textbf{Goroutine} 和 \textbf{Channel} 的高并发模型，模拟\textbf{用户并发在线}，执行定时挖坑，确保挖坑行动的\textbf{隐蔽性}与\textbf{高效性}。
-    \item \textbf{实时监控与响应}：运用 \textbf{WebSocket} 协议实现了对目标帖子的\textbf{实时监听与交互}。确保在烂坑被识破的第一时间，Agent能光速完成\textbf{“lktp”}或\textbf{反向钓鱼}操作，展现出极高的AI博弈能力。
-    \item \textbf{可视化GUI}：前端使用 \textbf{React} 框架构建了\textbf{后台管理的可视化面板 (Admin Panel)}。可一键下达挖坑指令、动态调整Agent的\textbf{指令}、并实时监控数据。
+    \item \textbf{轨迹数据处理}：设计并实现了面向 GUI Agent 的\textbf{任务轨迹解析与批量处理流程}，支持对操作截图序列、动作历史、任务目标及推理/操作说明进行统一组织与标准化输入。
+    \item \textbf{自动化评估模块}：构建了基于 \textbf{VLM} 与多种 judge 后端的\textbf{轨迹评估机制}，综合截图状态变化、动作执行路径和任务目标完成情况，判断 Agent 在复杂交互场景下的真实任务完成度。
+    \item \textbf{奖励信号生成}：将轨迹评估结果转化为结构化的 \textbf{judge/reward 输出}，相比仅依赖最终文本答案或字符串匹配的传统评估方式，更准确地刻画 GUI Agent 的操作过程质量与任务完成效果。
+    \item \textbf{核心产出}：完成了从\textbf{轨迹采集、截图理解、动作历史分析到奖励信号生成}的 GUI Agent 评测闭环，为后续 Agent Benchmark、Reward Modeling 与 RL 训练数据构建提供了可复用的基础模块。
 \end{itemize}
 
-\section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
-\begin{itemize}[nosep]
-    \item \textbf{编程语言：} \textbf{Go}, Python, C++
-    \item \textbf{开发工具：} SSH, Git, Vim, MakeFile,LaTex
-    \item \textbf{操作系统：} Linux
-\end{itemize}
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
-\begin{itemize}
-    \item CC98年度用户 \hfill 2023.12
+% \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}
+% \begin{itemize}[nosep]
+%     \item \textbf{编程语言：} \textbf{Go}, Python, C++
+%     \item \textbf{开发工具：} SSH, Git, Vim, MakeFile,LaTex
+%     \item \textbf{操作系统：} Linux
+% \end{itemize}
+% \section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faList}\ 获奖情况}
+% \begin{itemize}
+%     \item CC98年度用户 \hfill 2023.12
     
-\end{itemize}
+% \end{itemize}
     
-\section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
-\begin{itemize}[parsep=0.5ex]
-    \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{https://maksymilan.github.io/}
-    \item \textbf{GitHub：} \href{https://github.com/maksymilan}{https://github.com/maksymilan} 
-    \item \textbf{英语水平：} CET-4, CET-6
-\end{itemize}
+% \section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
+% \begin{itemize}[parsep=0.5ex]
+%     % \item \textbf{技术博客：} \href{https://maksymilan.github.io/}{https://maksymilan.github.io/}
+%     % \item \textbf{GitHub：} \href{https://github.com/maksymilan}{https://github.com/maksymilan} 
+%     \item \textbf{英语水平：} CET-4:, CET-6
+% \end{itemize}
 \end{document}

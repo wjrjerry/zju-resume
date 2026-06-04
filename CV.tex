@@ -59,8 +59,6 @@
 [{\color{CVBlue}\titlerule}]
 \titlespacing*{\section}{0cm}{*1.35}{*0.85}
 
-\newcommand{\entry}[2]{\textbf{#1} & #2\\}
-
 \begin{document}
 \pagenumbering{gobble}
 
@@ -75,61 +73,37 @@
 \vspace{0.15em}
 \centerline{\normalsize{\faPhone\ +86 18516265729 \quad \faEnvelopeO\ \href{mailto:jieruiwang@zju.edu.cn}{jieruiwang@zju.edu.cn}}}
 
-\section{\makebox[\widthof{\faInfoCircle}][c]{\color{CVBlue}\faInfoCircle}\ Program Information}
-\begin{tabular}{@{}p{4.2cm}p{12.8cm}@{}}
-\entry{Training/Internship Field}{Computer Science}
-\entry{Host Institution}{Carnegie Mellon University, Language Technologies Institute}
-\entry{Host Supervisor}{Lei Li, Associate Professor}
-\entry{Supervisor Contact}{\href{mailto:leili@cs.cmu.edu}{leili@cs.cmu.edu}; 412-258-7674}
-\entry{Program Period}{July 6, 2026 -- September 4, 2026}
-\entry{Home Institution}{Zhejiang University}
-\entry{Current Program}{B.S. in Computer Science and Technology, Turing Class}
-\end{tabular}
-
-\section{\makebox[\widthof{\faBullseye}][c]{\color{CVBlue}\faBullseye}\ Purpose of Visit}
-I plan to participate in a short-term summer research internship at Carnegie Mellon University under the guidance of Associate Professor Lei Li. The purpose of this visit is academic training in computer science research, with a focus on large language models, multi-modal learning, and agent-based systems. In particular, I hope to deepen my understanding of how large language models learn from feedback, how different training objectives shape reasoning behavior, and how these methods can be evaluated reliably in practical interactive settings.
-
-This internship is directly connected to my undergraduate training at Zhejiang University and to my current research experience in artificial intelligence. I will use the internship to learn research methodology in an active academic environment, strengthen my ability to implement and evaluate state-of-the-art methods, and develop an independent research project that can support my future study in computer science.
-
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Academic Background}
-I am currently a junior student in the Turing Class, Computer Science and Technology program at Zhejiang University. My academic record includes a GPA of 4.2/4.3 and a rank of 1/99. Since May 2025, I have worked as a research intern at the Institute of Artificial Intelligence, Zhejiang University.
-
-My previous research projects have prepared me for the proposed internship. In \textbf{TimeThinkingLLM}, I worked on time-series question answering by connecting continuous temporal signals with language-model reasoning through temporal encoders, modal alignment, chain-of-thought data, and reinforcement learning methods such as GRPO. In \textbf{CUARewarder}, I built a trajectory-evaluation and reward-modeling pipeline for GUI agents, using visual-language models and judge backends to evaluate whether agents complete web or desktop tasks. In \textbf{TradeActor}, I developed a research pipeline for multi-modal stock forecasting and portfolio policy learning, including signal generation, model-based evaluation, teacher-label construction, policy training, and backtesting.
-
 \section{\makebox[\widthof{\faFlask}][c]{\color{CVBlue}\faFlask}\ Proposed Research Direction}
-The proposed research topic is \textbf{learning from feedback for multi-modal and agentic large language models}. The project will study how language models and agent systems can use feedback signals to improve reasoning, decision-making, and task completion. The work may involve literature review, implementation of recent methods, validation experiments, analysis of model behavior, and development of new techniques for more reliable learning and evaluation.
+During the summer research internship at Carnegie Mellon University from July 6, 2026 to September 4, 2026, I plan to conduct research in computer science under the guidance of Associate Professor Lei Li. The proposed research direction is \textbf{learning from feedback for multi-modal and agentic large language models}. This direction is closely related to large language models, multi-modal learning, and agent-based systems, and it aims to study how feedback signals and training objectives shape the reasoning and decision-making behavior of modern AI systems.
+
+The project will focus on how large language models can learn from different forms of feedback, including human preference, model-generated judgments, task rewards, trajectory-level evaluations, and multi-modal observations such as screenshots or visual states. A central goal is to understand how these feedback signals influence model reasoning, task completion, and reliability in practical interactive environments.
+
+My previous research experience has prepared me for this topic. In \textbf{TimeThinkingLLM}, I studied how continuous time-series signals can be aligned with language-model reasoning through temporal encoders, chain-of-thought data, and reinforcement learning methods such as GRPO. In \textbf{CUARewarder}, I worked on trajectory evaluation and reward modeling for GUI agents, using visual-language models and judge backends to assess whether agents complete web or desktop tasks. In \textbf{TradeActor}, I built a multi-modal forecasting and policy-learning pipeline involving signal generation, model-based evaluation, teacher-label construction, policy training, and backtesting. These projects provide a foundation for the proposed research on feedback-driven learning and evaluation for language-model agents.
 
 The main research questions include:
 \begin{itemize}
-    \item How do different feedback signals, such as human preference, model-generated judgments, task rewards, or trajectory-level evaluations, affect the reasoning behavior of large language models?
-    \item How can multi-modal information, including screenshots, visual states, structured records, or other non-text inputs, be incorporated into training and evaluation pipelines?
+    \item How do different feedback signals affect the reasoning behavior and task performance of large language models?
+    \item How can multi-modal inputs, such as screenshots, visual states, structured records, and action histories, be incorporated into model training and evaluation?
     \item How can agent-based systems be evaluated beyond final-answer matching, especially when task success depends on intermediate actions and environmental state changes?
-    \item What practical training objectives can improve model reliability while keeping the evaluation process reproducible and scientifically meaningful?
+    \item What training objectives can improve model reliability while keeping experiments reproducible and scientifically meaningful?
 \end{itemize}
 
 \section{\makebox[\widthof{\faTasks}][c]{\color{CVBlue}\faTasks}\ Training Plan and Timeline}
-\textbf{Weeks 1--2: Orientation and literature review.} I will become familiar with the host group's research environment, review recent work on large language models, multi-modal learning, reinforcement learning from feedback, agentic LLMs, and trustworthy generative AI, and define a concrete research problem with the supervisor.
+\textbf{Weeks 1--2: Orientation and literature review.} I will become familiar with the host research environment, meet with the supervisor and research group, and review recent work on large language models, multi-modal learning, reinforcement learning from feedback, agentic LLMs, and trustworthy generative AI. Based on discussion with the supervisor, I will define a concrete research problem and set up the required codebase, datasets, and experimental environment.
 
-\textbf{Weeks 3--4: Baseline implementation.} I will implement or reproduce relevant state-of-the-art methods, prepare datasets or task environments, build evaluation scripts, and establish baseline results. This phase will focus on correctness, reproducibility, and understanding the strengths and limitations of existing methods.
+\textbf{Weeks 3--4: Baseline implementation.} I will implement or reproduce relevant state-of-the-art methods, prepare datasets or task environments, build evaluation scripts, and establish baseline results. This stage will focus on correctness, reproducibility, and understanding the strengths and limitations of existing feedback-learning and agent-evaluation methods.
 
-\textbf{Weeks 5--7: Experimentation and method development.} I will conduct validation experiments, compare training objectives and feedback designs, analyze model behavior, and propose possible improvements. Depending on project progress, this may include reward-modeling methods, judge-based evaluation, trajectory-level supervision, or multi-modal feedback integration.
+\textbf{Weeks 5--7: Experimentation and method development.} I will conduct validation experiments, compare different feedback designs and training objectives, analyze model behavior, and propose possible technical improvements. Depending on the progress of the project, this work may involve reward modeling, judge-based evaluation, trajectory-level supervision, reinforcement learning from feedback, or integration of multi-modal observations into the learning process.
 
-\textbf{Weeks 8--9: Analysis, writing, and presentation.} I will summarize results, prepare figures and tables, write a research report or paper draft, and present the work to the supervisor and research group. If the results are sufficiently strong, I will continue improving the project after the internship toward submission to an appropriate academic venue.
-
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Supervision and Learning Activities}
-The primary supervisor will be Associate Professor Lei Li. Professor Li is an Associate Professor in the Language Technologies Institute at Carnegie Mellon University. His research interests include machine translation, trustworthy generative AI, agentic LLMs, and AI-powered drug discovery. He received his B.S. from Shanghai Jiao Tong University and Ph.D. from Carnegie Mellon University. His academic honors include the ACL 2021 Best Paper Award, CCF Young Elite Award, Wu Wen-tsun AI Prize, and the ACM SIGKDD dissertation award runner-up recognition. His team has also achieved strong results in WMT machine translation tasks.
-
-During the internship, I expect to work daily on assigned research tasks and interact regularly with the faculty mentor, postdoctoral fellows, graduate students, and other members of the research group. I will participate in lab meetings, technical discussions, and research talks in the Computer Science Department and on the CMU campus. The training will combine guided learning, hands-on programming, experiment design, paper reading, research discussion, and independent analysis.
+\textbf{Weeks 8--9: Analysis, writing, and presentation.} I will summarize the experimental results, prepare figures and tables, analyze the findings and limitations, and write a final research report or paper draft. I will also present the project goals, methods, results, and conclusions to the supervisor and research group. If the results are promising, I plan to continue improving the work after the internship toward submission to an appropriate academic venue.
 
 \section{\makebox[\widthof{\faCheckSquareO}][c]{\color{CVBlue}\faCheckSquareO}\ Expected Outcomes and Evaluation}
-By the end of the internship, I expect to acquire stronger skills in large language model research, multi-modal learning, agent-system evaluation, feedback-based training, experimental design, and academic writing. My progress will be evaluated through concrete research outputs, including literature notes, implemented code, experimental results, analysis of findings, research presentations, and a final report or paper draft.
+By the end of the internship, I expect to gain deeper knowledge of large language model research, multi-modal learning, agent-system evaluation, feedback-based training, experimental design, and academic writing. I also expect to become more proficient in implementing research methods, conducting controlled experiments, interpreting results, and communicating technical findings in an academic setting.
 
-The evaluation will be based on the completion of agreed research tasks, the quality of experimental conclusions, and my ability to explain the motivation, methodology, results, and limitations of the project. Near the beginning of the program, I will clarify my internship goals with the supervisor. Near the end of the program, I will present my accomplishments and receive feedback from the faculty host and senior researchers in the group.
+The expected research outputs include literature notes, implemented code, baseline results, experiment logs, analysis of model behavior, a final presentation, and a research report or paper draft. These outputs will demonstrate my progress in both technical skills and research methodology.
 
-\section{\makebox[\widthof{\faUniversity}][c]{\color{CVBlue}\faUniversity}\ Cultural and Academic Engagement}
-In addition to research training, I plan to participate in appropriate cultural and academic activities in the United States. These may include attending campus talks, plays, musical performances, CMU and local sporting events, museum visits, and trips to local science or history centers with students, staff, and faculty. These activities will help me better understand the academic culture and broader community environment at Carnegie Mellon University and in Pittsburgh.
+My acquisition of new skills and competencies will be evaluated through the completion of specific research tasks, the quality of experimental results and conclusions, and my ability to explain the motivation, methodology, results, and limitations of the project. Near the beginning of the program, I will clarify the internship goals with the supervisor. Near the end of the program, I will present my accomplishments and receive feedback from the faculty host and senior researchers in the group.
 
-\section{\makebox[\widthof{\faPlane}][c]{\color{CVBlue}\faPlane}\ Plan After the Internship}
-After completing the summer research internship on September 4, 2026, I plan to return to Zhejiang University to continue my undergraduate study in Computer Science and Technology. I will use the research training, technical skills, and academic experience gained at Carnegie Mellon University to support my senior-year study, ongoing research projects, and future graduate-level research preparation.
+After completing the summer research internship, I plan to return to Zhejiang University to continue my undergraduate study in Computer Science and Technology. I will use the research training, technical skills, and academic experience gained at Carnegie Mellon University to support my senior-year study, ongoing research projects, and future graduate-level research preparation.
 
 \end{document}

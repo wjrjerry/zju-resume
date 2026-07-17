@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+
 \setlength{\parindent}{0pt}
 \usepackage{xltxtra}
 \usepackage{hyperref}
@@ -17,88 +18,145 @@
 \usepackage{enumitem}
 \CJKsetecglue{}
 
+
 % Main document font
 \setmainfont[
     Path = fonts/Main/,
-    UprightFont = texgyretermes-regular.otf,
+    Extension = .otf,
     BoldFont = texgyretermes-bold.otf,
-]{texgyretermes}
+]{texgyretermes-regular.otf}
 
 % CJK fallback font
 \setCJKmainfont[
     Path = fonts/hansans/,
-    UprightFont = NotoSansSC-Regular.ttf,
+    Extension = .ttf,
     BoldFont = NotoSansSC-Bold.ttf,
-]{NotoSansSC}
+]{NotoSansSC-Regular.otf}
+
 
 \usepackage{relsize}
 \usepackage{xspace}
+
 \usepackage{fontawesome}
 
 % A4 paper margins
 \usepackage[
     a4paper,
-    left=1.35cm,
-    right=1.35cm,
-    top=1.45cm,
-    bottom=1.15cm,
+    left=1.2cm,
+    right=1.2cm,
+    top=1.5cm,
+    bottom=1cm,
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.18}
+\renewcommand{\baselinestretch}{1.5}
 
 \usepackage{titlesec}
+\usepackage{enumitem}
 \setlist{noitemsep}
 \setlist[itemize]{topsep=0.25em, leftmargin=*}
 \setlist[enumerate]{topsep=0.25em, leftmargin=*}
+
+% Vertical spacing between projects
+\newlength{\interProjectSpacing}
+\setlength{\interProjectSpacing}{0.9em}
+\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
+
+% Spacing between project titles and summaries
+\newlength{\intraProjectTitleSep}
+\setlength{\intraProjectTitleSep}{0.4em}
+\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
+
+% Spacing between project summaries and bullet lists
+\newlength{\intraProjectListTopSep}
+\setlength{\intraProjectListTopSep}{0.2em}
+
 
 \titleformat{\section}
 {\large\bfseries\raggedright}
 {}{0em}
 {}
 [{\color{CVBlue}\titlerule}]
-\titlespacing*{\section}{0cm}{*1.35}{*0.85}
+\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+
+
 
 \begin{document}
 \pagenumbering{gobble}
 
-\centerline{\LARGE\bfseries{Research Plan for Summer Research Internship}}
-\vspace{0.35em}
-\centerline{\large\bfseries{Jierui Wang}}
-\vspace{0.15em}
-\centerline{\normalsize{\faPhone\ +86 18516265729 \quad \faEnvelopeO\ \href{mailto:jieruiwang@zju.edu.cn}{jieruiwang@zju.edu.cn}}}
+% Position the university logo on the first page
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
+  \end{tikzpicture}%
+\centerline{\LARGE\bfseries{Jierui Wang}}
 
-\section{\makebox[\widthof{\faFlask}][c]{\color{CVBlue}\faFlask}\ Proposed Research Direction}
-During the summer research internship at Carnegie Mellon University from July 6, 2026 to September 4, 2026, I plan to conduct research in computer science under the guidance of Associate Professor Lei Li. The proposed research direction is \textbf{learning from feedback for multi-modal and agentic large language models}. This direction is closely related to large language models, multi-modal learning, and agent-based systems, and it aims to study how feedback signals and training objectives shape the reasoning and decision-making behavior of modern AI systems.
+\centerline{\normalsize{\faPhone\ +86 18516265729 \quad +1 412 912 5930}}
+\centerline{\normalsize{\faEnvelopeO\ \href{mailto:jieruiwang@zju.edu.cn}{jieruiwang@zju.edu.cn} \quad \href{mailto:jieruiw@andrew.cmu.edu}{jieruiw@andrew.cmu.edu}}}
 
-The project will focus on how large language models can learn from different forms of feedback, including human preference, model-generated judgments, task rewards, trajectory-level evaluations, and multi-modal observations such as screenshots or visual states. A central goal is to understand how these feedback signals influence model reasoning, task completion, and reliability in practical interactive environments.
+\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education}
+\textbf{Zhejiang University} \hfill Sep. 2023 -- Present\\[0.5em]
+B.S. in Computer Science and Technology, Turing Class\\[0.5em]
+Expected Graduation: Jun. 2027
 
-My previous research experience has prepared me for this topic. In \textbf{TimeThinkingLLM}, I studied how continuous time-series signals can be aligned with language-model reasoning through temporal encoders, chain-of-thought data, and reinforcement learning methods such as GRPO. In \textbf{CUARewarder}, I worked on trajectory evaluation and reward modeling for GUI agents, using visual-language models and judge backends to assess whether agents complete web or desktop tasks. In \textbf{TradeActor}, I built a multi-modal forecasting and policy-learning pipeline involving signal generation, model-based evaluation, teacher-label construction, policy training, and backtesting. These projects provide a foundation for the proposed research on feedback-driven learning and evaluation for language-model agents.
-
-The main research questions include:
-\begin{itemize}
-    \item How do different feedback signals affect the reasoning behavior and task performance of large language models?
-    \item How can multi-modal inputs, such as screenshots, visual states, structured records, and action histories, be incorporated into model training and evaluation?
-    \item How can agent-based systems be evaluated beyond final-answer matching, especially when task success depends on intermediate actions and environmental state changes?
-    \item What training objectives can improve model reliability while keeping experiments reproducible and scientifically meaningful?
+\begin{itemize}[nosep]
+    \item GPA: 4.2/4.3
+    \item Rank: 1/99
+    \item CET-4: 624
+    \item IELTS: 7.5
 \end{itemize}
 
-\section{\makebox[\widthof{\faTasks}][c]{\color{CVBlue}\faTasks}\ Training Plan and Timeline}
-\textbf{Weeks 1--2: Orientation and literature review.} I will become familiar with the host research environment, meet with the supervisor and research group, and review recent work on large language models, multi-modal learning, reinforcement learning from feedback, agentic LLMs, and trustworthy generative AI. Based on discussion with the supervisor, I will define a concrete research problem and set up the required codebase, datasets, and experimental environment.
+\section{\makebox[\widthof{\faFlask}][c]{\color{CVBlue}\faFlask}\ Research Experience}
+\textbf{Computer Science Department, Carnegie Mellon University} \hfill Jul. 2025 -- Present\\[0.5em]
+Research Intern, advised by Lei Li
 
-\textbf{Weeks 3--4: Baseline implementation.} I will implement or reproduce relevant state-of-the-art methods, prepare datasets or task environments, build evaluation scripts, and establish baseline results. This stage will focus on correctness, reproducibility, and understanding the strengths and limitations of existing feedback-learning and agent-evaluation methods.
+\projectsep
 
-\textbf{Weeks 5--7: Experimentation and method development.} I will conduct validation experiments, compare different feedback designs and training objectives, analyze model behavior, and propose possible technical improvements. Depending on the progress of the project, this work may involve reward modeling, judge-based evaluation, trajectory-level supervision, reinforcement learning from feedback, or integration of multi-modal observations into the learning process.
+\textbf{Institute of Artificial Intelligence, Zhejiang University} \hfill May 2025 -- May 2026\\[0.5em]
+Research Intern, advised by Linchao Zhu
 
-\textbf{Weeks 8--9: Analysis, writing, and presentation.} I will summarize the experimental results, prepare figures and tables, analyze the findings and limitations, and write a final research report or paper draft. I will also present the project goals, methods, results, and conclusions to the supervisor and research group. If the results are promising, I plan to continue improving the work after the internship toward submission to an appropriate academic venue.
+\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Project Experience}
 
-\section{\makebox[\widthof{\faCheckSquareO}][c]{\color{CVBlue}\faCheckSquareO}\ Expected Outcomes and Evaluation}
-By the end of the internship, I expect to gain deeper knowledge of large language model research, multi-modal learning, agent-system evaluation, feedback-based training, experimental design, and academic writing. I also expect to become more proficient in implementing research methods, conducting controlled experiments, interpreting results, and communicating technical findings in an academic setting.
+\projectsep
 
-The expected research outputs include literature notes, implemented code, baseline results, experiment logs, analysis of model behavior, a final presentation, and a research report or paper draft. These outputs will demonstrate my progress in both technical skills and research methodology.
+\textbf{SusVibes} \hfill Jun. 2026 -- Present \titlebreak
+Expanding a repository-level benchmark that evaluates both the functional correctness and security of patches generated by LLM coding agents, while investigating Safe Vibe Coding agent strategies that improve code security without compromising functional correctness.
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item Benchmark expansion: Planning to extend SusVibes to additional programming languages and construct larger-scale security tasks and training datasets for coding-agent training and evaluation.
+    \item Agent strategies: Investigating decision-making and collaboration mechanisms for secure code-generation agents, including training safety monitors to assess risks in agent execution and code changes, and incorporating monitor feedback into iterative decision-making to improve security while preserving functional correctness.
+\end{itemize}
 
-My acquisition of new skills and competencies will be evaluated through the completion of specific research tasks, the quality of experimental results and conclusions, and my ability to explain the motivation, methodology, results, and limitations of the project. Near the beginning of the program, I will clarify the internship goals with the supervisor. Near the end of the program, I will present my accomplishments and receive feedback from the faculty host and senior researchers in the group.
+\projectsep
 
-After completing the summer research internship, I plan to return to Zhejiang University to continue my undergraduate study in Computer Science and Technology. I will use the research training, technical skills, and academic experience gained at Carnegie Mellon University to support my senior-year study, ongoing research projects, and future graduate-level research preparation.
+\textbf{CUARewarder} \hfill Mar. 2026 -- May 2026 \titlebreak
+Built an automated trajectory-evaluation and reward-modeling pipeline for GUI Agents. Given a task goal, screenshot sequence, agent action history, and optional reasoning traces, the system uses VLMs and multiple judge backends to determine whether an agent truly completed a web or desktop task, then emits structured reward outputs for agent evaluation, reward modeling, and RL data construction.
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item Trajectory data processing: Designed and implemented a batch processing pipeline for GUI Agent trajectories, standardizing screenshot sequences, action histories, task goals, and reasoning or operation notes into unified model inputs.
+    \item Automated evaluation module: Built a VLM- and judge-backend-based trajectory evaluation mechanism that jointly considers screenshot-state changes, action paths, and task-completion requirements to assess real completion quality in complex interaction scenarios.
+    \item Reward signal generation: Converted judge outcomes into structured judge/reward outputs, capturing process quality and task completion more accurately than traditional evaluation methods based only on final text answers or string matching.
+    \item Core deliverable: Completed a reusable evaluation loop covering trajectory collection, screenshot understanding, action-history analysis, and reward generation, supporting future Agent Benchmarks, reward modeling, and RL training-data construction.
+\end{itemize}
+
+\projectsep
+
+\textbf{TradeActor} \hfill Mar. 2026 -- May 2026 \titlebreak
+Built a research pipeline for stock forecasting and portfolio policy learning, covering multimodal signal generation, VLM-based forecast evaluation, teacher-label construction, policy training, and backtesting. The system focuses on DOW-20 equities, combines historical price charts, numerical summaries, and news windows into prediction samples, and trains a Qwen-based portfolio policy to predict daily target allocations across cash + 20 stocks.
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item Forecast sample generation: Constructed rollout samples for DOW-20 stocks from historical price charts, numerical summaries, and news windows; called Qwen/Gemini models to produce structured JSON signals including upside probability, 24-day return quantile, long/short/flat trading stance, and confidence.
+    \item VLM signal evaluation: Measured valid rate, 5/10/24-day directional accuracy, probability error, quantile coverage, and bias\_strength buckets to assess forecast quality; found that aggregate signals were weak, while high-bias\_strength subsets offered useful filtering value.
+    \item Teacher-label construction: Used future 5d/10d open returns as the main lookahead-oracle signal and blended in VLM direction and confidence as a lightweight adjustment, generating daily 21-dimensional target allocations for portfolio policy supervision.
+    \item Portfolio policy training: Used Qwen3.5-0.8B as the portfolio-state encoder, feeding current holdings and VLM JSON signals for 20 stocks; attached an FFN head to the <PORTFOLIO\_DECISION> token to output 21-dimensional softmax allocations optimized with a utility-oriented loss over return, turnover cost, and allocation-change cost.
+    \item Backtesting validation: Integrated the policy into the StockBench backtesting framework as a qwen\_portfolio\_policy strategy, enabling trained policies to predict daily target weights, generate buy/sell orders, and validate the full path from predictive signals to executable portfolio decisions.
+\end{itemize}
+
+\projectsep
+
+\textbf{TimeThinkingLLM} \hfill Sep. 2025 -- Jan. 2026 \titlebreak
+Developed a time-series reasoning framework for Time-Series QA, bridging continuous temporal signals and natural-language reasoning. The project combines a Temporal Encoder + LLM Backbone architecture with reconstruction loss, VLM knowledge distillation, and RLVR/GRPO reinforcement learning to improve LLM perception and reasoning over trends, anomalies, periodicity, and other temporal patterns.
+\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item Model architecture: Designed and implemented an MLP-Mixer-based temporal encoder with token mixing, channel mixing, statistical feature injection, and learnable positional encodings, mapping continuous time series into semantic embedding spaces compatible with LLMs such as Qwen-3.
+    \item Modal alignment and training: Built a dynamic embedding injection mechanism that inserts temporal features into text-instruction sequences; introduced a trend-aware reconstruction loss based on Pearson Correlation so alignment emphasizes sequence shape and directional movement instead of isolated pointwise error.
+    \item Reasoning enhancement: Established a four-stage training pipeline covering modal pretraining, joint fine-tuning, CoT supervised fine-tuning, and GRPO reinforcement learning; used VLMs to generate chain-of-thought data for trend analysis, anomaly detection, and periodicity judgment.
+    \item Experimental evaluation: Conducted systematic evaluation on ChatTS Eval A/B, TimeSeriesExam, MCQ, and other time-series understanding and reasoning benchmarks; analyzed encoder convergence, model-capacity limits, and CoT stability to guide later data expansion, VLM-as-a-Judge reward modeling, and backbone migration.
+\end{itemize}
 
 \end{document}

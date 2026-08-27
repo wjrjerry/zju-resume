@@ -147,13 +147,11 @@
 \projectsep
 
 % --- 第二个项目 ---
-\textbf{CUARewarder} \hfill 2026.3 -- 2026.5 \titlebreak
-项目描述：本项目面向 \textbf{GUI Agent} 的轨迹评估与奖励建模场景，旨在将网页/桌面操作类任务的执行过程转化为可自动评估的 \textbf{judge/reward 信号}。项目以任务目标、截图序列、Agent 动作历史及可选推理说明为输入，结合 \textbf{VLM} 与多种 judge 后端，对 Agent 是否真实完成任务进行自动化判定，并生成结构化奖励结果，可用于 Agent 评测、Reward Modeling 及 RL 训练数据构建。
+\textbf{SeekJudge：面向 Computer-Use Agent 的奖励建模框架} \quad \href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]} \hfill 2026.3 -- 2026.5 \titlebreak
+参与开发一个面向 Computer-Use Agent 的实用奖励框架，根据 Agent 的截图和动作判断任务是否完成，并将评测结果转化为强化学习训练信号。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{轨迹数据处理}：设计并实现了面向 GUI Agent 的\textbf{任务轨迹解析与批量处理流程}，支持对操作截图序列、动作历史、任务目标及推理/操作说明进行统一组织与标准化输入。
-    \item \textbf{自动化评估模块}：构建了基于 \textbf{VLM} 与多种 judge 后端的\textbf{轨迹评估机制}，综合截图状态变化、动作执行路径和任务目标完成情况，判断 Agent 在复杂交互场景下的真实任务完成度。
-    \item \textbf{奖励信号生成}：将轨迹评估结果转化为结构化的 \textbf{judge/reward 输出}，相比仅依赖最终文本答案或字符串匹配的传统评估方式，更准确地刻画 GUI Agent 的操作过程质量与任务完成效果。
-    \item \textbf{核心产出}：完成了从\textbf{轨迹采集、截图理解、动作历史分析到奖励信号生成}的 GUI Agent 评测闭环，为后续 Agent Benchmark、Reward Modeling 与 RL 训练数据构建提供了可复用的基础模块。
+    \item 设计由 \textbf{Condense、Ground、Seek、Analyze} 四类角色组成的多智能体评测流程，通过 Seek--Analyze 循环处理截图和动作序列，判断长程 GUI 任务是否完成。
+    \item 构建可复用的轨迹处理与 HTTP 奖励服务，支持离线批量评测和在线强化学习训练，并输出轨迹级奖励与步骤级质量判断。
 \end{itemize}
 
 % \section{\makebox[\widthof{\faCogs}][c]{\color{CVBlue}\faCogs}\ 技术栈}

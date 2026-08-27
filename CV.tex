@@ -135,25 +135,20 @@ Developed a practical reward framework for computer-use agents that evaluates wh
 
 \projectsep
 
-\textbf{TradeActor} \hfill Mar. 2026 -- May 2026 \titlebreak
-Built a research pipeline for stock forecasting and portfolio policy learning, covering multimodal signal generation, VLM-based forecast evaluation, teacher-label construction, policy training, and backtesting. The system focuses on DOW-20 equities, combines historical price charts, numerical summaries, and news windows into prediction samples, and trains a Qwen-based portfolio policy to predict daily target allocations across cash + 20 stocks.
+\textbf{TradeActor: Multimodal Stock Forecasting and Portfolio Learning} \hfill Mar. 2026 -- May 2026 \titlebreak
+Built a system that combines stock charts, numerical data, and news to forecast DOW-20 stocks and make daily portfolio allocation decisions.
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Forecast sample generation: Constructed rollout samples for DOW-20 stocks from historical price charts, numerical summaries, and news windows; called Qwen/Gemini models to produce structured JSON signals including upside probability, 24-day return quantile, long/short/flat trading stance, and confidence.
-    \item VLM signal evaluation: Measured valid rate, 5/10/24-day directional accuracy, probability error, quantile coverage, and bias\_strength buckets to assess forecast quality; found that aggregate signals were weak, while high-bias\_strength subsets offered useful filtering value.
-    \item Teacher-label construction: Used future 5d/10d open returns as the main lookahead-oracle signal and blended in VLM direction and confidence as a lightweight adjustment, generating daily 21-dimensional target allocations for portfolio policy supervision.
-    \item Portfolio policy training: Used Qwen3.5-0.8B as the portfolio-state encoder, feeding current holdings and VLM JSON signals for 20 stocks; attached an FFN head to the <PORTFOLIO\_DECISION> token to output 21-dimensional softmax allocations optimized with a utility-oriented loss over return, turnover cost, and allocation-change cost.
-    \item Backtesting validation: Integrated the policy into the StockBench backtesting framework as a qwen\_portfolio\_policy strategy, enabling trained policies to predict daily target weights, generate buy/sell orders, and validate the full path from predictive signals to executable portfolio decisions.
+    \item Generated and evaluated LLM-based trading signals, then trained a Qwen-based portfolio policy with return and transaction-cost objectives.
+    \item Integrated the policy into StockBench for end-to-end portfolio backtesting.
 \end{itemize}
 
 \projectsep
 
-\textbf{TimeThinkingLLM} \hfill Sep. 2025 -- Jan. 2026 \titlebreak
-Developed a time-series reasoning framework for Time-Series QA, bridging continuous temporal signals and natural-language reasoning. The project combines a Temporal Encoder + LLM Backbone architecture with reconstruction loss, VLM knowledge distillation, and RLVR/GRPO reinforcement learning to improve LLM perception and reasoning over trends, anomalies, periodicity, and other temporal patterns.
+\textbf{TimeThinkingLLM: Multimodal Time-Series Reasoning} \hfill Sep. 2025 -- Jan. 2026 \titlebreak
+Built a framework that connects continuous time-series signals with language-model reasoning.
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Model architecture: Designed and implemented an MLP-Mixer-based temporal encoder with token mixing, channel mixing, statistical feature injection, and learnable positional encodings, mapping continuous time series into semantic embedding spaces compatible with LLMs such as Qwen-3.
-    \item Modal alignment and training: Built a dynamic embedding injection mechanism that inserts temporal features into text-instruction sequences; introduced a trend-aware reconstruction loss based on Pearson Correlation so alignment emphasizes sequence shape and directional movement instead of isolated pointwise error.
-    \item Reasoning enhancement: Established a four-stage training pipeline covering modal pretraining, joint fine-tuning, CoT supervised fine-tuning, and GRPO reinforcement learning; used VLMs to generate chain-of-thought data for trend analysis, anomaly detection, and periodicity judgment.
-    \item Experimental evaluation: Conducted systematic evaluation on ChatTS Eval A/B, TimeSeriesExam, MCQ, and other time-series understanding and reasoning benchmarks; analyzed encoder convergence, model-capacity limits, and CoT stability to guide later data expansion, VLM-as-a-Judge reward modeling, and backbone migration.
+    \item Designed a temporal encoder and embedding interface to enable Qwen-3 to process time-series data.
+    \item Trained and evaluated the model with GRPO on time-series reasoning benchmarks.
 \end{itemize}
 
 \end{document}

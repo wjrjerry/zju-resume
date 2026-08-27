@@ -123,24 +123,19 @@
 % --- 第一个项目 ---
 % 将标题行末尾的 \\ 替换为 \titlebreak 命令
 
-\textbf{TradeActor} \hfill 2026.3 -- 至今 \titlebreak
-项目描述：本项目面向\textbf{股票预测与组合策略学习}场景，旨在构建从多模态股票信号生成、VLM预测评估、策略教师标签构造到组合策略训练与回测验证的完整流程。项目以 \textbf{DOW-20} 股票为研究对象，结合历史价格图、数值摘要与新闻窗口生成预测样本，并训练基于 \textbf{Qwen} 的 Portfolio Policy，实现对每日 \textbf{cash + 20 stocks} 的目标仓位预测。
+\textbf{TradeActor：多模态股票预测与组合策略学习} \hfill 2026.3 -- 至今 \titlebreak
+构建结合股票价格图、数值信息和新闻的多模态预测系统，用于预测 DOW-20 股票并进行每日组合配置。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{预测样本生成}：针对 \textbf{DOW-20} 股票，基于历史价格图、数值摘要与新闻窗口构造 rollout 样本，并调用 \textbf{Qwen/Gemini} 等模型生成结构化 \textbf{JSON} 信号，包括上涨概率、24日收益分位数、long/short/flat 交易倾向及置信度。
-    \item \textbf{VLM信号评估}：系统统计 \textbf{valid rate、5/10/24日方向准确率、概率误差、分位数覆盖率} 与 bias\_strength 分桶效果，验证 VLM 股票预测信号的有效性；实验发现整体信号偏弱，但高 bias\_strength 子集具备一定筛选价值。
-    \item \textbf{策略教师构造}：以未来 \textbf{5d/10d open return} 作为 lookahead oracle 主信号，并融合 VLM 的方向与置信度作为小权重修正，生成每日 \textbf{21维目标仓位}，用于构造组合策略训练标签。
-    \item \textbf{组合策略训练}：将 \textbf{Qwen3.5-0.8B} 作为组合状态 encoder，输入当前持仓与20只股票的 VLM JSON 信号，并在特殊 token \textbf{<PORTFOLIO\_DECISION>} 上接入 \textbf{FFN head}，直接输出21维 softmax 仓位；训练目标采用偏 \textbf{utility loss} 的形式，综合收益、换手成本与仓位变化成本。
-    \item \textbf{回测验证}：集成 \textbf{StockBench} 回测框架，实现 \textbf{qwen\_portfolio\_policy strategy}，支持加载训练好的 policy，在回测中按日预测目标仓位并生成买卖订单，完成从预测信号到组合交易策略的闭环验证。
+    \item 生成并评估基于大语言模型的交易信号，训练同时考虑收益和交易成本的 Qwen 组合策略模型。
+    \item 将模型集成到 StockBench 中，完成从股票预测到组合回测的验证。
 \end{itemize}
 
 
-\textbf{TimeThinkingLLM} \hfill 2025.9 -- 2026.1 \titlebreak
-项目描述：本项目面向\textbf{时间序列问答(Time-Series QA)}场景，旨在打通连续时序信号与自然语言逻辑推理之间的模态鸿沟。项目构建了基于\textbf{Temporal Encoder + LLM Backbone}的时序推理框架，引入\textbf{重构损失、VLM知识蒸馏与RLVR/GRPO强化学习}，提升大语言模型对趋势、异常、周期等时间序列模式的感知与推理能力。
+\textbf{TimeThinkingLLM：多模态时间序列推理} \hfill 2025.9 -- 2026.1 \titlebreak
+构建连接连续时间序列信号与大语言模型推理能力的多模态框架。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{模型架构}：独立设计并实现了基于 \textbf{MLP-Mixer} 的\textbf{时序编码器}，融合 Token-Mixing、Channel-Mixing、统计特征注入与可学习位置编码，将连续时间序列映射到 \textbf{Qwen-3} 等大语言模型可理解的语义嵌入空间。
-    \item \textbf{模态对齐与训练}：设计了 \textbf{动态Embedding注入机制}，将时序特征无缝嵌入文本指令序列；同时引入基于 \textbf{Pearson Correlation} 的趋势感知重构损失，使模型在对齐过程中更关注序列形态与变化趋势，而非单点数值误差。
-    \item \textbf{推理能力增强}：构建了从\textbf{模态预训练、联合微调、CoT监督微调到GRPO强化学习}的四阶段训练流程，并利用 \textbf{VLM} 生成时序趋势分析、异常检测、周期判断等\textbf{链式推理数据}，增强模型的复杂时间序列推理能力。
-    \item \textbf{实验评估}：在 \textbf{ChatTS Eval A/B、TimeSeriesExam、MCQ} 等时间序列理解与推理基准上完成系统评测，并围绕编码器收敛、模型容量限制与CoT稳定性进行了深入误差分析，为后续数据扩展、VLM-as-a-Judge奖励建模和大模型骨干迁移提供实验依据。
+    \item 设计时序编码器和 Embedding 接口，使 Qwen-3 能够处理时间序列数据。
+    \item 使用 GRPO 训练模型，并在多个时间序列推理基准上进行评测。
 \end{itemize}
 
 % 使用 \projectsep 命令来分隔两个项目

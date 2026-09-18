@@ -116,36 +116,41 @@ Research Intern, advised by Linchao Zhu
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Project Experience}
 
-\projectsep
+% Compact spacing scoped to project descriptions and contribution lists.
+\begingroup
+\renewcommand{\baselinestretch}{1.15}\selectfont
+\setlength{\interProjectSpacing}{0.6em}
+\setlength{\intraProjectTitleSep}{0.15em}
+\setlength{\intraProjectListTopSep}{0.1em}
 
 \textbf{SusVibes: Benchmarking Secure Coding Agents} \hfill Jun. 2026 -- Present \titlebreak
 \textit{Li Lab} \titlebreak
-\textbf{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses functional and security tests to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a safety monitor to identify potential risks and provide warnings to coding agents.
+\textbf{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses \textbf{functional and security tests} to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a \textbf{safety monitor} to identify potential risks and provide warnings to coding agents.
 
 \textbf{My Contribution:}
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Built a task-construction pipeline that extracts vulnerability-fixing commits from public GitHub Security Advisories (GHSAs) and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
+    \item Built a \textbf{task-construction pipeline} that extracts \textbf{vulnerability-fixing commits} from public \textbf{GitHub Security Advisories (GHSAs)} and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
 \end{itemize}
 
 \projectsep
 
 \textbf{SeekJudge: Reward Modeling for Computer-Use Agents} \quad \href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]} \hfill Mar. 2026 -- May 2026 \titlebreak
 \textit{ZJU Scaling Logger (ZJUSCL)} \titlebreak
-\textbf{Project Overview:} A practical model-based reward framework that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative Seek--Analyze loop, and distills their capabilities into a specialized 9B judge model that matches or surpasses rule-based rewards in online reinforcement learning while providing step-level judgments at lower cost.
+\textbf{Project Overview:} A practical \textbf{model-based reward framework} that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative \textbf{Seek--Analyze loop}, and distills their capabilities into a specialized \textbf{9B judge model} that matches or surpasses rule-based rewards in \textbf{online reinforcement learning} while providing step-level judgments at lower cost.
 
 \textbf{My Contributions:}
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Developed the Condense--Ground--Seek--Analyze judging pipeline, using a Seek--Analyze loop to gather evidence from long screenshot and action sequences and determine task completion.
-    \item Built the trajectory-processing and HTTP reward-serving pipeline, supporting offline batch evaluation and online reinforcement learning.
+    \item Developed the \textbf{Condense--Ground--Seek--Analyze judging pipeline}, using a Seek--Analyze loop to gather evidence from long screenshot and action sequences and determine task completion.
+    \item Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting \textbf{offline batch evaluation} and \textbf{online reinforcement learning}.
 \end{itemize}
 
 \projectsep
 
 \textbf{TradeActor: Multimodal Stock Forecasting and Portfolio Learning} \hfill Mar. 2026 -- May 2026 \titlebreak
-Built a system that combines stock charts, numerical data, and news to forecast DOW-20 stocks and make daily portfolio allocation decisions.
+Built a system that combines stock charts, numerical data, and news to forecast \textbf{DOW-20} stocks and make daily \textbf{portfolio allocation} decisions.
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Generated and evaluated LLM-based trading signals, then trained a Qwen-based portfolio policy with return and transaction-cost objectives.
-    \item Integrated the policy into StockBench for end-to-end portfolio backtesting.
+    \item Generated and evaluated \textbf{LLM-based trading signals}, then trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
+    \item Integrated the policy into \textbf{StockBench} for end-to-end \textbf{portfolio backtesting}.
 \end{itemize}
 
 \projectsep
@@ -153,8 +158,10 @@ Built a system that combines stock charts, numerical data, and news to forecast 
 \textbf{TimeThinkingLLM: Multimodal Time-Series Reasoning} \hfill Sep. 2025 -- Jan. 2026 \titlebreak
 Built a framework that connects continuous time-series signals with language-model reasoning.
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Designed a temporal encoder and embedding interface to enable Qwen-3 to process time-series data.
-    \item Trained and evaluated the model with GRPO on time-series reasoning benchmarks.
+    \item Designed a \textbf{temporal encoder} and \textbf{embedding interface} to enable \textbf{Qwen-3} to process time-series data.
+    \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
 \end{itemize}
+
+\par\endgroup
 
 \end{document}

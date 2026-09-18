@@ -1,166 +1,159 @@
 \documentclass[11pt]{article}
 
-
-\setlength{\parindent}{0pt}
-\usepackage{xltxtra}
-\usepackage{hyperref}
-\hypersetup{hidelinks}
-\usepackage{url}
-\urlstyle{tt}
-\usepackage{xcolor}
-\definecolor{CVBlue}{RGB}{23,110,191}
-\usepackage{calc}
-\usepackage{graphicx}
-\usepackage{tikz}
-\usetikzlibrary{calc}
 \usepackage{fontspec}
 \usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{needspace}
+\usepackage{fontawesome}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
 \CJKsetecglue{}
 
+\definecolor{CVBlue}{RGB}{32,58,86}
+\definecolor{CVMuted}{RGB}{85,91,99}
 
-% Main document font
+% Use the bundled fonts; slanted metadata uses the regular face.
 \setmainfont[
     Path = fonts/Main/,
-    Extension = .otf,
+    UprightFont = texgyretermes-regular.otf,
     BoldFont = texgyretermes-bold.otf,
-]{texgyretermes-regular.otf}
-
-% CJK fallback font
+    ItalicFont = texgyretermes-regular.otf,
+    ItalicFeatures = {FakeSlant=0.18},
+]{texgyretermes}
 \setCJKmainfont[
     Path = fonts/hansans/,
-    Extension = .ttf,
+    UprightFont = NotoSansSC-Regular.ttf,
     BoldFont = NotoSansSC-Bold.ttf,
-]{NotoSansSC-Regular.otf}
+]{NotoSansSC}
 
-
-\usepackage{relsize}
-\usepackage{xspace}
-
-\usepackage{fontawesome}
-
-% A4 paper margins
 \usepackage[
     a4paper,
-    left=1.2cm,
-    right=1.2cm,
-    top=1.5cm,
-    bottom=1cm,
+    left=1.5cm,
+    right=1.5cm,
+    top=1.3cm,
+    bottom=1.3cm,
     nohead
 ]{geometry}
 
-\renewcommand{\baselinestretch}{1.5}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\renewcommand{\baselinestretch}{1.12}
+\setlength{\emergencystretch}{1.5em}
+\clubpenalty=10000
+\widowpenalty=10000
+\raggedbottom
 
-\usepackage{titlesec}
-\usepackage{enumitem}
-\setlist{noitemsep}
-\setlist[itemize]{topsep=0.25em, leftmargin=*}
-\setlist[enumerate]{topsep=0.25em, leftmargin=*}
-
-% Vertical spacing between projects
-\newlength{\interProjectSpacing}
-\setlength{\interProjectSpacing}{0.9em}
-\newcommand{\projectsep}{\vspace{\interProjectSpacing}}
-
-% Spacing between project titles and summaries
-\newlength{\intraProjectTitleSep}
-\setlength{\intraProjectTitleSep}{0.4em}
-\newcommand{\titlebreak}{\\[\intraProjectTitleSep]}
-
-% Spacing between project summaries and bullet lists
-\newlength{\intraProjectListTopSep}
-\setlength{\intraProjectListTopSep}{0.2em}
-
+\setlist[itemize]{
+    leftmargin=1.3em,
+    labelsep=0.45em,
+    itemsep=1.5pt,
+    parsep=0pt,
+    topsep=3pt,
+    partopsep=0pt
+}
 
 \titleformat{\section}
-{\large\bfseries\raggedright}
-{}{0em}
-{}
-[{\color{CVBlue}\titlerule}]
-\titlespacing*{\section}{0cm}{*1.6}{*1.2}
+{\large\bfseries\color{CVBlue}\raggedright}
+{}{0em}{}
+[{\color{CVBlue}\titlerule[0.4pt]}]
+\titlespacing*{\section}{0pt}{11pt}{5pt}
 
-
+% A fixed date column keeps long headings aligned and allows them to wrap.
+\newcommand{\cvheading}[2]{%
+    \par\noindent
+    \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}>{\raggedleft\arraybackslash}p{3.4cm}@{}}
+        \textbf{#1} & {\small\color{CVMuted}#2}
+    \end{tabularx}\par\nobreak\vspace{1pt}%
+}
+\newcommand{\projectheading}[2]{%
+    \Needspace{5\baselineskip}%
+    \cvheading{#1}{#2}%
+}
+\newcommand{\affiliation}[1]{%
+    {\small\color{CVMuted}\itshape #1\par}\nobreak
+}
+\newcommand{\cvlabel}[1]{{\small\color{CVMuted}#1}}
+\newcommand{\projectsep}{\par\addvspace{8pt}}
 
 \begin{document}
 \pagenumbering{gobble}
 
-% Position the university logo on the first page
-\begin{tikzpicture}[remember picture, overlay]
-    \node[anchor = north west] at ($(current page.north west)+(0.5cm,+1.0cm)$) {\includegraphics[height=6cm]{zju.png}};
-  \end{tikzpicture}%
-\centerline{\LARGE\bfseries{Jierui Wang}}
+% Crop only the blank margins in the logo; keep the image file unchanged.
+\noindent
+\begin{minipage}[c]{0.22\linewidth}
+    \includegraphics[width=3.5cm,trim=90bp 685bp 95bp 700bp,clip]{zju.png}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.75\linewidth}
+    \raggedleft
+    {\fontsize{23}{26}\selectfont\bfseries Jierui Wang\par}
+    \vspace{3pt}
+    {\fontsize{9.5}{12}\selectfont\color{CVMuted}
+    \faPhone\ +86 18516265729 \quad +1 412 912 5930\par
+    \faEnvelopeO\ \href{mailto:jieruiwang@zju.edu.cn}{jieruiwang@zju.edu.cn} \quad \href{mailto:jieruiw@andrew.cmu.edu}{jieruiw@andrew.cmu.edu}\par}
+\end{minipage}
+\par
 
-\centerline{\normalsize{\faPhone\ +86 18516265729 \quad +1 412 912 5930}}
-\centerline{\normalsize{\faEnvelopeO\ \href{mailto:jieruiwang@zju.edu.cn}{jieruiwang@zju.edu.cn} \quad \href{mailto:jieruiw@andrew.cmu.edu}{jieruiw@andrew.cmu.edu}}}
+\section{Education}
+\cvheading{Zhejiang University}{Sep. 2023 -- Present}
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}r@{}}
+    B.S. in Computer Science and Technology, Turing Class & {\small\color{CVMuted}Expected Graduation: Jun. 2027}
+\end{tabularx}\par
+\textbf{GPA:} 4.2/4.3 \qquad \textbf{Rank:} 1/99 \qquad \textbf{IELTS:} 7.5
 
-\section{\makebox[\widthof{\faGraduationCap}][c]{\color{CVBlue}\faGraduationCap}\ Education}
-\textbf{Zhejiang University} \hfill Sep. 2023 -- Present\\[0.5em]
-B.S. in Computer Science and Technology, Turing Class\\[0.5em]
-Expected Graduation: Jun. 2027
-
-\begin{itemize}[nosep]
-    \item GPA: 4.2/4.3
-    \item Rank: 1/99
-    \item IELTS: 7.5
-\end{itemize}
-
-\section{\makebox[\widthof{\faFlask}][c]{\color{CVBlue}\faFlask}\ Research Experience}
-\textbf{Li Lab, Carnegie Mellon University} \hfill Jun. 2026 -- Sep. 2026\\[0.5em]
+\section{Research Experience}
+\cvheading{Li Lab, Carnegie Mellon University}{Jun. 2026 -- Sep. 2026}
 Research Intern, advised by Lei Li
 
 \projectsep
 
-\textbf{ZJU Scaling Logger (ZJUSCL), Zhejiang University} \hfill May 2025 -- May 2026\\[0.5em]
+\cvheading{ZJU Scaling Logger (ZJUSCL), Zhejiang University}{May 2025 -- May 2026}
 Research Intern, advised by Linchao Zhu
 
-\section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ Project Experience}
+\section{Project Experience}
 
-% Compact spacing scoped to project descriptions and contribution lists.
-\begingroup
-\renewcommand{\baselinestretch}{1.15}\selectfont
-\setlength{\interProjectSpacing}{0.6em}
-\setlength{\intraProjectTitleSep}{0.15em}
-\setlength{\intraProjectListTopSep}{0.1em}
+\projectheading{SusVibes: Benchmarking Secure Coding Agents}{Jun. 2026 -- Present}
+\affiliation{Li Lab}
+\cvlabel{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses \textbf{functional and security tests} to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a \textbf{safety monitor} to identify potential risks and provide warnings to coding agents.
 
-\textbf{SusVibes: Benchmarking Secure Coding Agents} \hfill Jun. 2026 -- Present \titlebreak
-\textit{Li Lab} \titlebreak
-\textbf{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses \textbf{functional and security tests} to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a \textbf{safety monitor} to identify potential risks and provide warnings to coding agents.
-
-\textbf{My Contribution:}
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Built a \textbf{task-construction pipeline} that extracts \textbf{vulnerability-fixing commits} from public \textbf{GitHub Security Advisories (GHSAs)} and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
+\cvlabel{My Contribution:}\par\nopagebreak
+\begin{itemize}
+    \item Built a \textbf{task-construction pipeline} that extracts vulnerability-fixing commits from public \textbf{GitHub Security Advisories (GHSAs)} and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
 \end{itemize}
 
 \projectsep
 
-\textbf{SeekJudge: Reward Modeling for Computer-Use Agents} \quad \href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]} \hfill Mar. 2026 -- May 2026 \titlebreak
-\textit{ZJU Scaling Logger (ZJUSCL)} \titlebreak
-\textbf{Project Overview:} A practical \textbf{model-based reward framework} that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative \textbf{Seek--Analyze loop}, and distills their capabilities into a specialized \textbf{9B judge model} that matches or surpasses rule-based rewards in \textbf{online reinforcement learning} while providing step-level judgments at lower cost.
+\projectheading{SeekJudge: Reward Modeling for Computer-Use Agents\enspace {\small\normalfont\color{CVMuted}\href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]}}}{Mar. 2026 -- May 2026}
+\affiliation{ZJU Scaling Logger (ZJUSCL)}
+\cvlabel{Project Overview:} A practical model-based reward framework that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative Seek--Analyze loop, and distills their capabilities into a specialized \textbf{9B judge model} that matches or surpasses rule-based rewards in \textbf{online reinforcement learning} while providing step-level judgments at lower cost.
 
-\textbf{My Contributions:}
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+\cvlabel{My Contributions:}\par\nopagebreak
+\begin{itemize}
     \item Developed the \textbf{Condense--Ground--Seek--Analyze judging pipeline}, using a Seek--Analyze loop to gather evidence from long screenshot and action sequences and determine task completion.
-    \item Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting \textbf{offline batch evaluation} and \textbf{online reinforcement learning}.
+    \item Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online reinforcement learning.
 \end{itemize}
 
 \projectsep
 
-\textbf{TradeActor: Multimodal Stock Forecasting and Portfolio Learning} \hfill Mar. 2026 -- May 2026 \titlebreak
-Built a system that combines stock charts, numerical data, and news to forecast \textbf{DOW-20} stocks and make daily \textbf{portfolio allocation} decisions.
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+\projectheading{TradeActor: Multimodal Stock Forecasting and Portfolio Learning}{Mar. 2026 -- May 2026}
+Built a system that combines stock charts, numerical data, and news to forecast DOW-20 stocks and make daily portfolio allocation decisions.
+\begin{itemize}
     \item Generated and evaluated \textbf{LLM-based trading signals}, then trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
-    \item Integrated the policy into \textbf{StockBench} for end-to-end \textbf{portfolio backtesting}.
+    \item Integrated the policy into \textbf{StockBench} for end-to-end portfolio backtesting.
 \end{itemize}
 
 \projectsep
 
-\textbf{TimeThinkingLLM: Multimodal Time-Series Reasoning} \hfill Sep. 2025 -- Jan. 2026 \titlebreak
+\projectheading{TimeThinkingLLM: Multimodal Time-Series Reasoning}{Sep. 2025 -- Jan. 2026}
 Built a framework that connects continuous time-series signals with language-model reasoning.
-\begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item Designed a \textbf{temporal encoder} and \textbf{embedding interface} to enable \textbf{Qwen-3} to process time-series data.
+\begin{itemize}
+    \item Designed a \textbf{temporal encoder} and embedding interface to enable \textbf{Qwen-3} to process time-series data.
     \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
 \end{itemize}
-
-\par\endgroup
 
 \end{document}

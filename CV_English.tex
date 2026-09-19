@@ -11,11 +11,11 @@
 \usepackage{needspace}
 \usepackage{fontawesome}
 \usepackage{hyperref}
-\hypersetup{hidelinks}
 \CJKsetecglue{}
 
 \definecolor{CVBlue}{RGB}{32,58,86}
 \definecolor{CVMuted}{RGB}{85,91,99}
+\hypersetup{colorlinks=true,urlcolor=CVBlue,linkcolor=CVBlue}
 
 % Use the bundled fonts; slanted metadata uses the regular face.
 \setmainfont[
@@ -75,10 +75,15 @@
     \cvheading{#1}{#2}%
 }
 \newcommand{\affiliation}[1]{%
-    {\small\color{CVMuted}\itshape #1\par}\nobreak
+    {\small\color{CVMuted}#1\par}\nobreak
 }
-\newcommand{\cvlabel}[1]{{\small\color{CVMuted}#1}}
 \newcommand{\projectsep}{\par\addvspace{8pt}}
+\newcommand{\publication}[3]{%
+    \par\Needspace{5\baselineskip}%
+    {\bfseries #1\par}\nobreak
+    {\small #2\par}\nobreak
+    {\small\color{CVMuted}#3\par}%
+}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -104,9 +109,22 @@
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}r@{}}
     B.S. in Computer Science and Technology, Turing Class & {\small\color{CVMuted}Expected Graduation: Jun. 2027}
 \end{tabularx}\par
-\textbf{GPA:} 4.2/4.3 \qquad \textbf{Rank:} 1/99 \qquad \textbf{IELTS:} 7.5
+\textbf{GPA: 4.2/4.3} \qquad \textbf{Rank: 1/99} \qquad \textbf{IELTS:} 7.5
 
-\section{Research Experience}
+\section{Publications and Preprints}
+\publication
+    {AuraForge: Beyond Human-Written Tests for Training Secure Vibe Coding Agents}
+    {Danqing Wang, Songwen Zhao, Harsh Sharma, \textbf{Jierui Wang}, Andre Vicente Duarte, Ivan Bercovich, Yangruibo Ding, Lei Li.}
+    {\textbf{Under review at ICLR}}
+
+\projectsep
+
+\publication
+    {SeekJudge: A Practical Reward Framework for Reinforcement Learning in Computer-Use Agents}
+    {Yang Wan, Zhenhao Zhang, \textbf{Jierui Wang}, Linchao Zhu.}
+    {arXiv, 2026 \quad \textbf{Under review at ICLR} \quad \href{https://arxiv.org/abs/2607.23263}{[arXiv]}\enspace\href{https://github.com/ZJUSCL/SeekJudge}{[Code]}}
+
+\section{Research Internships}
 \cvheading{Li Lab, Carnegie Mellon University}{Jun. 2026 -- Sep. 2026}
 Research Intern, advised by Lei Li
 
@@ -115,44 +133,38 @@ Research Intern, advised by Lei Li
 \cvheading{ZJU Scaling Logger (ZJUSCL), Zhejiang University}{May 2025 -- May 2026}
 Research Intern, advised by Linchao Zhu
 
-\section{Project Experience}
+\section{Research Projects}
 
-\projectheading{SusVibes: Benchmarking Secure Coding Agents}{Jun. 2026 -- Present}
+\projectheading{AuraForge: Secure Coding-Agent Evaluation and Training}{Jun. 2026 -- Present}
 \affiliation{Li Lab}
-\cvlabel{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses \textbf{functional and security tests} to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a \textbf{safety monitor} to identify potential risks and provide warnings to coding agents.
-
-\cvlabel{My Contribution:}\par\nopagebreak
 \begin{itemize}
-    \item Built a \textbf{task-construction pipeline} that extracts vulnerability-fixing commits from public \textbf{GitHub Security Advisories (GHSAs)} and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
+    \item \textbf{Research objective:} Evaluate repository-level patches with functional and security tests; investigate \textbf{safety monitors} that identify execution risks and guide agent decisions to improve security while preserving functional correctness.
+    \item \textbf{Contribution:} Built a task-construction pipeline that extracts vulnerability-fixing commits from public GitHub Security Advisories (GHSAs) and converts them into repository-level tasks with functional and security tests for \textbf{joint evaluation of correctness and patch security}.
 \end{itemize}
 
 \projectsep
 
-\projectheading{SeekJudge: Reward Modeling for Computer-Use Agents\enspace {\small\normalfont\color{CVMuted}\href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]}\enspace\href{https://arxiv.org/abs/2607.23263}{[arXiv]}}}{Mar. 2026 -- May 2026}
-\affiliation{ZJU Scaling Logger (ZJUSCL) \quad Under review at ICLR}
-\cvlabel{Project Overview:} A practical model-based reward framework that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative Seek--Analyze loop, and distills their capabilities into a specialized \textbf{9B judge model} that matches or surpasses rule-based rewards in \textbf{online reinforcement learning} while providing step-level judgments at lower cost.
-
-\cvlabel{My Contributions:}\par\nopagebreak
+\projectheading{SeekJudge: Reward Modeling for Computer-Use Agents}{Mar. 2026 -- May 2026}
+\affiliation{ZJU Scaling Logger (ZJUSCL)}
 \begin{itemize}
-    \item Developed the \textbf{Condense--Ground--Seek--Analyze judging pipeline}, using a Seek--Analyze loop to gather evidence from long screenshot and action sequences and determine task completion.
-    \item Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online reinforcement learning.
+    \item \textbf{Research problem:} Assess long-horizon GUI task completion to provide model-based rewards for agent RL. The project distills multi-agent judging into a \textbf{9B judge model} that matches or surpasses rule-based rewards in online RL.
+    \item \textbf{Contribution:} Developed the Condense--Ground--Seek--Analyze judging pipeline, using an \textbf{iterative Seek--Analyze loop} to gather evidence from long screenshot and action sequences and determine task completion.
+    \item \textbf{System implementation:} Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online RL.
 \end{itemize}
 
 \projectsep
 
 \projectheading{TradeActor: Multimodal Stock Forecasting and Portfolio Learning}{Mar. 2026 -- May 2026}
-Built a system that combines stock charts, numerical data, and news to forecast DOW-20 stocks and make daily portfolio allocation decisions.
 \begin{itemize}
-    \item Generated and evaluated \textbf{LLM-based trading signals}, then trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
-    \item Integrated the policy into \textbf{StockBench} for end-to-end portfolio backtesting.
+    \item Combined stock charts, numerical data, and news to generate and evaluate \textbf{LLM-based trading signals} for DOW-20; trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
+    \item Integrated the policy into \textbf{StockBench} for daily allocation decisions and end-to-end portfolio backtesting.
 \end{itemize}
 
 \projectsep
 
 \projectheading{TimeThinkingLLM: Multimodal Time-Series Reasoning}{Sep. 2025 -- Jan. 2026}
-Built a framework that connects continuous time-series signals with language-model reasoning.
 \begin{itemize}
-    \item Designed a \textbf{temporal encoder} and embedding interface to enable \textbf{Qwen-3} to process time-series data.
+    \item Designed a \textbf{temporal encoder} and embedding interface connecting continuous time-series signals with \textbf{Qwen-3} for language-model reasoning.
     \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
 \end{itemize}
 

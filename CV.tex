@@ -90,7 +90,7 @@
 \end{minipage}\hfill
 \begin{minipage}[c]{0.75\linewidth}
     \raggedleft
-    {\fontsize{23}{26}\selectfont\bfseries Jierui Wang\par}
+    {\fontsize{23}{26}\selectfont\bfseries 王洁睿\par}
     \vspace{3pt}
     {\fontsize{9.5}{12}\selectfont\color{CVMuted}
     \faPhone\ +86 18516265729 \quad +1 412 912 5930\par
@@ -98,62 +98,62 @@
 \end{minipage}
 \par
 
-\section{Education}
-\cvheading{Zhejiang University}{Sep. 2023 -- Present}
+\section{教育背景}
+\cvheading{浙江大学}{2023.09 -- 至今}
 \noindent
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}r@{}}
-    B.S. in Computer Science and Technology, Turing Class & {\small\color{CVMuted}Expected Graduation: Jun. 2027}
+    计算机科学与技术专业，图灵班，本科 & {\small\color{CVMuted}预计毕业时间：2027年6月}
 \end{tabularx}\par
-\textbf{GPA:} 4.2/4.3 \qquad \textbf{Rank:} 1/99 \qquad \textbf{IELTS:} 7.5
+\textbf{GPA：}4.2/4.3 \qquad \textbf{排名：}1/99 \qquad \textbf{雅思：}7.5
 
-\section{Research Experience}
-\cvheading{Li Lab, Carnegie Mellon University}{Jun. 2026 -- Sep. 2026}
-Research Intern, advised by Lei Li
+\section{科研经历}
+\cvheading{卡内基梅隆大学，Li Lab}{2026.06 -- 2026.09}
+科研实习生，指导老师：Lei Li
 
 \projectsep
 
-\cvheading{ZJU Scaling Logger (ZJUSCL), Zhejiang University}{May 2025 -- May 2026}
-Research Intern, advised by Linchao Zhu
+\cvheading{浙江大学，ZJU Scaling Logger（ZJUSCL）}{2025.05 -- 2026.05}
+科研实习生，指导老师：朱霖潮
 
-\section{Project Experience}
+\section{项目经历}
 
-\projectheading{SusVibes: Benchmarking Secure Coding Agents}{Jun. 2026 -- Present}
+\projectheading{SusVibes：代码智能体安全评测基准}{2026.06 -- 至今}
 \affiliation{Li Lab}
-\cvlabel{Project Overview:} A repository-level framework for evaluating and improving coding-agent security. It uses \textbf{functional and security tests} to determine whether generated patches satisfy task requirements without introducing vulnerabilities, and trains a \textbf{safety monitor} to identify potential risks and provide warnings to coding agents.
+\cvlabel{项目简介：}面向代码智能体的仓库级安全评估与改进框架，通过\textbf{功能测试和安全测试}判断生成补丁能否在不引入漏洞的前提下满足任务要求，并训练\textbf{安全监控模型}识别潜在风险，为代码智能体提供预警。
 
-\cvlabel{My Contribution:}\par\nopagebreak
+\cvlabel{个人贡献：}\par\nopagebreak
 \begin{itemize}
-    \item Built a \textbf{task-construction pipeline} that extracts vulnerability-fixing commits from public \textbf{GitHub Security Advisories (GHSAs)} and converts them into repository-level coding-agent tasks with functional and security tests, enabling joint evaluation of task completion and patch security.
+    \item 构建\textbf{任务构造流水线}，从公开的\textbf{GitHub 安全公告（GHSAs）}中提取漏洞修复提交，将其转换为配备功能测试和安全测试的仓库级代码智能体任务，实现任务完成情况与补丁安全性的联合评估。
 \end{itemize}
 
 \projectsep
 
-\projectheading{SeekJudge: Reward Modeling for Computer-Use Agents\enspace {\small\normalfont\color{CVMuted}\href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]}\enspace\href{https://arxiv.org/abs/2607.23263}{[arXiv]}}}{Mar. 2026 -- May 2026}
-\affiliation{ZJU Scaling Logger (ZJUSCL) \quad Under review at ICLR}
-\cvlabel{Project Overview:} A practical model-based reward framework that replaces brittle rule-based supervision for computer-use agents. It uses four role-specialized agents---Condense, Ground, Seek, and Analyze---to verify long-horizon GUI trajectories through an iterative Seek--Analyze loop, and distills their capabilities into a specialized \textbf{9B judge model} that matches or surpasses rule-based rewards in \textbf{online reinforcement learning} while providing step-level judgments at lower cost.
+\projectheading{SeekJudge：计算机操作智能体的奖励建模\enspace {\small\normalfont\color{CVMuted}\href{https://github.com/ZJUSCL/SeekJudge}{[GitHub]}\enspace\href{https://arxiv.org/abs/2607.23263}{[arXiv]}}}{2026.03 -- 2026.05}
+\affiliation{ZJU Scaling Logger（ZJUSCL）\quad ICLR 在投}
+\cvlabel{项目简介：}面向计算机操作智能体的实用模型奖励框架，用于替代脆弱的规则监督。框架通过 Condense、Ground、Seek 和 Analyze 四个分工明确的智能体，在迭代式 Seek--Analyze 循环中验证长程 GUI 轨迹，并将其能力蒸馏至专用的\textbf{9B 评判模型}，在\textbf{在线强化学习}中达到或超过基于规则的奖励效果，同时以更低成本提供步骤级评判。
 
-\cvlabel{My Contributions:}\par\nopagebreak
+\cvlabel{个人贡献：}\par\nopagebreak
 \begin{itemize}
-    \item Developed the \textbf{Condense--Ground--Seek--Analyze judging pipeline}, using a Seek--Analyze loop to gather evidence from long screenshot and action sequences and determine task completion.
-    \item Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online reinforcement learning.
+    \item 开发\textbf{Condense--Ground--Seek--Analyze 评判流水线}，通过 Seek--Analyze 循环从长截图序列与操作序列中收集证据，判断任务是否完成。
+    \item 构建轨迹处理与\textbf{HTTP 奖励服务流水线}，支持离线批量评估和在线强化学习。
 \end{itemize}
 
 \projectsep
 
-\projectheading{TradeActor: Multimodal Stock Forecasting and Portfolio Learning}{Mar. 2026 -- May 2026}
-Built a system that combines stock charts, numerical data, and news to forecast DOW-20 stocks and make daily portfolio allocation decisions.
+\projectheading{TradeActor：多模态股票预测与投资组合学习}{2026.03 -- 2026.05}
+构建结合股票图表、数值数据和新闻的系统，对 DOW-20 股票进行预测，并制定每日投资组合配置决策。
 \begin{itemize}
-    \item Generated and evaluated \textbf{LLM-based trading signals}, then trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
-    \item Integrated the policy into \textbf{StockBench} for end-to-end portfolio backtesting.
+    \item 生成并评估\textbf{基于大语言模型的交易信号}，随后以收益和交易成本为优化目标，训练\textbf{基于 Qwen 的投资组合策略}。
+    \item 将策略接入\textbf{StockBench}，完成端到端投资组合回测。
 \end{itemize}
 
 \projectsep
 
-\projectheading{TimeThinkingLLM: Multimodal Time-Series Reasoning}{Sep. 2025 -- Jan. 2026}
-Built a framework that connects continuous time-series signals with language-model reasoning.
+\projectheading{TimeThinkingLLM：多模态时间序列推理}{2025.09 -- 2026.01}
+构建连接连续时间序列信号与语言模型推理的框架。
 \begin{itemize}
-    \item Designed a \textbf{temporal encoder} and embedding interface to enable \textbf{Qwen-3} to process time-series data.
-    \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
+    \item 设计\textbf{时间编码器}与嵌入接口，使\textbf{Qwen-3}能够处理时间序列数据。
+    \item 使用\textbf{GRPO}训练模型，并在时间序列推理基准上开展评估。
 \end{itemize}
 
 \end{document}

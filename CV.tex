@@ -11,7 +11,7 @@
 \usepackage{needspace}
 \usepackage{fontawesome}
 \usepackage{hyperref}
-\CJKsetecglue{\hskip 0.08em plus 0.04em minus 0.02em}
+\CJKsetecglue{}
 
 \definecolor{CVBlue}{RGB}{32,58,86}
 \definecolor{CVMuted}{RGB}{85,91,99}
@@ -25,21 +25,7 @@
     ItalicFont = texgyretermes-regular.otf,
     ItalicFeatures = {FakeSlant=0.18},
 ]{texgyretermes}
-% Prefer a Song-style body face; keep a portable bundled fallback.
-\IfFontExistsTF{FandolSong-Regular.otf}{
-    \setCJKmainfont[BoldFont=FandolSong-Bold.otf]{FandolSong-Regular.otf}
-}{
-    \IfFontExistsTF{Songti SC}{
-        \setCJKmainfont[BoldFont=Songti SC Bold]{Songti SC}
-    }{
-        \setCJKmainfont[
-            Path = fonts/hansans/,
-            UprightFont = NotoSansSC-Regular.ttf,
-            BoldFont = NotoSansSC-Bold.ttf,
-        ]{NotoSansSC}
-    }
-}
-\setCJKfamilyfont{cvheading}[
+\setCJKmainfont[
     Path = fonts/hansans/,
     UprightFont = NotoSansSC-Regular.ttf,
     BoldFont = NotoSansSC-Bold.ttf,
@@ -72,7 +58,7 @@
 }
 
 \titleformat{\section}
-{\large\CJKfamily{cvheading}\bfseries\color{CVBlue}\raggedright}
+{\large\bfseries\color{CVBlue}\raggedright}
 {}{0em}{}
 [{\color{CVBlue}\titlerule[0.4pt]}]
 \titlespacing*{\section}{0pt}{11pt}{5pt}
@@ -81,7 +67,7 @@
 \newcommand{\cvheading}[2]{%
     \par\noindent
     \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}>{\raggedleft\arraybackslash}p{3.4cm}@{}}
-        {\CJKfamily{cvheading}\bfseries #1} & {\small\color{CVMuted}#2}
+        \textbf{#1} & {\small\color{CVMuted}#2}
     \end{tabularx}\par\nobreak\vspace{1pt}%
 }
 \newcommand{\projectheading}[2]{%
@@ -109,7 +95,7 @@
 \end{minipage}\hfill
 \begin{minipage}[c]{0.75\linewidth}
     \raggedleft
-    {\fontsize{23}{26}\selectfont\CJKfamily{cvheading}\bfseries 王洁睿\par}
+    {\fontsize{23}{26}\selectfont\bfseries Jierui Wang\par}
     \vspace{3pt}
     {\fontsize{9.5}{12}\selectfont\color{CVMuted}
     \faPhone\ +86 18516265729 \quad +1 412 912 5930\par
@@ -117,73 +103,73 @@
 \end{minipage}
 \par
 
-\section{教育背景}
-\cvheading{浙江大学，竺可桢学院}{2023.09 -- 至今}
+\section{Education}
+\cvheading{Zhejiang University, Chu Kochen Honors College}{Sep. 2023 -- Present}
 \noindent
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X@{\hspace{0.8em}}r@{}}
-    计算机科学与技术专业，图灵班，本科 & {\small\color{CVMuted}预计毕业时间：2027年6月}
+    B.S. in Computer Science and Technology, Turing Class & {\small\color{CVMuted}Expected Graduation: Jun. 2027}
 \end{tabularx}\par
 \begin{itemize}
-    \item GPA：4.2/4.3 \qquad 排名：1/99 \qquad 雅思：7.5
-    \item 部分课程：计算机组成与设计（100）、机器学习（98）、操作系统（98）、编译原理（97）、数学分析（H）（96）、线性代数（H）（96）
+    \item GPA: 4.2/4.3 \qquad Rank: 1/99 \qquad IELTS: 7.5
+    \item Selected Coursework: Computer Organization and Design (100), Machine Learning (98), Operating Systems (98), Compiler Principles (97), Mathematical Analysis (H) (96), Linear Algebra (H) (96)
 \end{itemize}
 
-\section{论文}
+\section{Publications}
 \publication
     {AuraForge: Beyond Human-Written Tests for Training Secure Vibe Coding Agents}
     {Danqing Wang, Songwen Zhao, Harsh Sharma, \textbf{Jierui Wang}, Andre Vicente Duarte, Ivan Bercovich, Yangruibo Ding, Lei Li.}
-    {\textbf{ICLR 在投}}
+    {\textbf{Under review at ICLR}}
 
 \projectsep
 
 \publication
     {SeekJudge: A Practical Reward Framework for Reinforcement Learning in Computer-Use Agents}
     {Yang Wan, Zhenhao Zhang, \textbf{Jierui Wang}, Linchao Zhu.}
-    {\textbf{ICLR 在投}\par\nobreak
+    {\textbf{Under review at ICLR}\par\nobreak
     \href{https://arxiv.org/abs/2607.23263}{https://arxiv.org/abs/2607.23263}\quad\href{https://github.com/ZJUSCL/SeekJudge}{https://github.com/ZJUSCL/SeekJudge}}
 
-\section{科研实习}
-\cvheading{卡内基梅隆大学，Li Lab}{2026.06 -- 2026.09}
-科研实习生，指导老师：Lei Li
+\section{Research Internships}
+\cvheading{Li Lab, Carnegie Mellon University}{Jun. 2026 -- Sep. 2026}
+Research Intern, advised by Lei Li
 
 \projectsep
 
-\cvheading{浙江大学，ZJU Scaling Logger（ZJUSCL）}{2025.05 -- 2026.05}
-科研实习生，指导老师：朱霖潮
+\cvheading{ZJU Scaling Logger (ZJUSCL), Zhejiang University}{May 2025 -- May 2026}
+Research Intern, advised by Linchao Zhu
 
-\section{研究与项目经历}
+\section{Research Projects}
 
-\projectheading{AuraForge：代码智能体安全评测与训练}{2026.06 -- 至今}
+\projectheading{AuraForge: Secure Coding-Agent Evaluation and Training}{Jun. 2026 -- Present}
 \affiliation{Li Lab}
 \begin{itemize}
-    \item \textbf{研究目标：}结合功能测试与安全测试评估仓库级代码补丁，研究通过\textbf{安全监控模型（Monitor）}识别执行风险并辅助智能体决策，在保持功能正确性的同时提升代码安全性。
-    \item \textbf{个人贡献：}构建任务构造流水线，从公开的 GitHub 安全公告（GHSAs）中提取漏洞修复提交，转换为配备功能测试和安全测试的仓库级任务，支持\textbf{功能正确性与补丁安全性的联合评估}。
+    \item \textbf{Research objective:} Evaluate repository-level patches with functional and security tests; investigate \textbf{safety monitors} that identify execution risks and guide agent decisions to improve security while preserving functional correctness.
+    \item \textbf{Contribution:} Built a task-construction pipeline that extracts vulnerability-fixing commits from public GitHub Security Advisories (GHSAs) and converts them into repository-level tasks with functional and security tests for \textbf{joint evaluation of correctness and patch security}.
 \end{itemize}
 
 \projectsep
 
-\projectheading{SeekJudge：计算机操作智能体的奖励建模}{2026.03 -- 2026.05}
-\affiliation{ZJU Scaling Logger（ZJUSCL）}
+\projectheading{SeekJudge: Reward Modeling for Computer-Use Agents}{Mar. 2026 -- May 2026}
+\affiliation{ZJU Scaling Logger (ZJUSCL)}
 \begin{itemize}
-    \item \textbf{研究问题：}面向长程 GUI 任务的完成度评估，为智能体强化学习提供模型奖励。项目将多智能体评判能力蒸馏至\textbf{9B 评判模型}，在在线强化学习中达到或超过基于规则的奖励效果。
-    \item \textbf{个人贡献：}开发 Condense--Ground--Seek--Analyze 评判流水线，通过\textbf{Seek--Analyze 迭代循环}从长截图序列与操作序列中提取证据，判断任务是否完成。
-    \item \textbf{系统实现：}构建轨迹处理与\textbf{HTTP 奖励服务流水线}，支持离线批量评估和在线强化学习。
+    \item \textbf{Research problem:} Assess long-horizon GUI task completion to provide model-based rewards for agent RL. The project distills multi-agent judging into a \textbf{9B judge model} that matches or surpasses rule-based rewards in online RL.
+    \item \textbf{Contribution:} Developed the Condense--Ground--Seek--Analyze judging pipeline, using an \textbf{iterative Seek--Analyze loop} to gather evidence from long screenshot and action sequences and determine task completion.
+    \item \textbf{System implementation:} Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online RL.
 \end{itemize}
 
 \projectsep
 
-\projectheading{TradeActor：多模态股票预测与投资组合学习}{2026.03 -- 2026.05}
+\projectheading{TradeActor: Multimodal Stock Forecasting and Portfolio Learning}{Mar. 2026 -- May 2026}
 \begin{itemize}
-    \item 融合股票图表、数值数据和新闻，生成并评估 DOW-20 股票的\textbf{大语言模型交易信号}，以收益和交易成本为目标训练\textbf{Qwen 投资组合策略}。
-    \item 将策略接入\textbf{StockBench}，实现每日资产配置决策与端到端投资组合回测。
+    \item Combined stock charts, numerical data, and news to generate and evaluate \textbf{LLM-based trading signals} for DOW-20; trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
+    \item Integrated the policy into \textbf{StockBench} for daily allocation decisions and end-to-end portfolio backtesting.
 \end{itemize}
 
 \projectsep
 
-\projectheading{TimeThinkingLLM：多模态时间序列推理}{2025.09 -- 2026.01}
+\projectheading{TimeThinkingLLM: Multimodal Time-Series Reasoning}{Sep. 2025 -- Jan. 2026}
 \begin{itemize}
-    \item 设计\textbf{时间编码器}与嵌入接口，将连续时间序列信号接入\textbf{Qwen-3}，支持语言模型的时间序列推理。
-    \item 使用\textbf{GRPO}训练模型，并在时间序列推理基准上开展评估。
+    \item Designed a \textbf{temporal encoder} and embedding interface connecting continuous time-series signals with \textbf{Qwen-3} for language-model reasoning.
+    \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
 \end{itemize}
 
 \end{document}

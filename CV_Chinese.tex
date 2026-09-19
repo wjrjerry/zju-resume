@@ -153,11 +153,12 @@
 
 \section{研究与项目经历}
 
-\projectheading{AuraForge：代码智能体安全评测与训练}{2026.06 -- 至今}
+\projectheading{AuraForge: Beyond Human-Written Tests for Training Secure Vibe Coding Agents}{2026.06 -- 至今}
 \affiliation{Li Lab}
 \begin{itemize}
-    \item \textbf{研究目标：}结合功能测试与安全测试评估仓库级代码补丁，研究通过\textbf{安全监控模型（Monitor）}识别执行风险并辅助智能体决策，在保持功能正确性的同时提升代码安全性。
-    \item \textbf{个人贡献：}构建任务构造流水线，从公开的 GitHub 安全公告（GHSAs）中提取漏洞修复提交，转换为配备功能测试和安全测试的仓库级任务，支持\textbf{功能正确性与补丁安全性的联合评估}。
+    \item \textbf{研究目标：}构建可规模化的可执行监督信号，训练代码智能体满足\textbf{隐式安全需求}，从功能行为与特定漏洞对应的安全属性两方面评估生成补丁。
+    \item \textbf{任务构造：}主导\textbf{JavaScript/TypeScript 任务构造流水线}，将真实漏洞修复转换为可执行的代码智能体任务。设计\textbf{语言感知的功能实现遮蔽机制}，移除存在漏洞的实现，同时保留独立重实现所需的声明、导出、类型签名与接口。
+    \item \textbf{执行基础设施与规模：}重建\textbf{仓库专用的 Node.js 环境}，涵盖运行时、包管理器、工作区、依赖和构建配置；开发\textbf{统一异构 JS/TS 测试运行器的适配器}，支持跨仓库状态的一致功能与安全验证。将\textbf{863 个经筛选的 JS/TS 候选转换为 229 个任务实例}，用于安全代码智能体的评估与训练。
 \end{itemize}
 
 \projectsep
@@ -165,25 +166,26 @@
 \projectheading{SeekJudge：计算机操作智能体的奖励建模}{2026.03 -- 2026.05}
 \affiliation{ZJU Scaling Logger（ZJUSCL）}
 \begin{itemize}
-    \item \textbf{研究问题：}面向长程 GUI 任务的完成度评估，为智能体强化学习提供模型奖励。项目将多智能体评判能力蒸馏至\textbf{9B 评判模型}，在在线强化学习中达到或超过基于规则的奖励效果。
-    \item \textbf{个人贡献：}开发 Condense--Ground--Seek--Analyze 评判流水线，通过\textbf{Seek--Analyze 迭代循环}从长截图序列与操作序列中提取证据，判断任务是否完成。
-    \item \textbf{系统实现：}构建轨迹处理与\textbf{HTTP 奖励服务流水线}，支持离线批量评估和在线强化学习。
+    \item \textbf{研究目标：}为长程计算机操作智能体开发基于模型的奖励，使在线强化学习无需依赖任务专用的规则验证器。
+    \item \textbf{研究方法：}共同开发\textbf{Condense--Ground--Seek--Analyze}框架，将长截图与操作轨迹压缩为语义时间线，将底层操作与对应界面元素及语义关联，并通过 Seek--Analyze 循环迭代定位、检查决定性视觉证据。最终将多智能体评判过程蒸馏至统一的\textbf{9B 评判模型}。
 \end{itemize}
 
 \projectsep
 
-\projectheading{TradeActor：多模态股票预测与投资组合学习}{2026.03 -- 2026.05}
+\projectheading{TradeActor：面向投资组合配置的多模态市场推理}{2026.03 -- 2026.05}
 \begin{itemize}
-    \item 融合股票图表、数值数据和新闻，生成并评估 DOW-20 股票的\textbf{大语言模型交易信号}，以收益和交易成本为目标训练\textbf{Qwen 投资组合策略}。
-    \item 将策略接入\textbf{StockBench}，实现每日资产配置决策与端到端投资组合回测。
+    \item 开发\textbf{多模态交易框架}，结合股价图表、技术指标图表与市场上下文，使用\textbf{冻结参数的视觉语言模型}提取语义信号，为下游投资组合决策提供支持。
+    \item 设计轻量级\textbf{Qwen-0.6B 投资组合策略模型}，将市场上下文编码至指定的\textbf{预测 token}，并通过\textbf{MLP 动作头}将该 token 的最终隐藏状态映射为连续的投资组合配置。
+    \item 以\textbf{考虑交易成本惩罚的投资组合收益}为目标优化策略，并通过\textbf{StockBench 端到端回测}评估每日资产配置决策。
 \end{itemize}
 
 \projectsep
 
 \projectheading{TimeThinkingLLM：多模态时间序列推理}{2025.09 -- 2026.01}
 \begin{itemize}
-    \item 设计\textbf{时间编码器}与嵌入接口，将连续时间序列信号接入\textbf{Qwen-3}，支持语言模型的时间序列推理。
-    \item 使用\textbf{GRPO}训练模型，并在时间序列推理基准上开展评估。
+    \item 开发\textbf{多模态框架}，将\textbf{连续时间序列信号}与\textbf{Qwen-3 的表示空间}对齐，使预训练语言模型能够直接理解时序数据。
+    \item 设计\textbf{时间编码器}与\textbf{投影机制}，将时间序列信号转换为与大语言模型\textbf{语义嵌入空间}兼容的表示。
+    \item 使用\textbf{基于 GRPO 的强化学习}训练模型进行\textbf{时序信号推理}，并在\textbf{时间序列基准}上评估其时序推理能力。
 \end{itemize}
 
 \end{document}

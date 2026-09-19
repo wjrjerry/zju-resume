@@ -139,11 +139,12 @@ Research Intern, advised by Linchao Zhu
 
 \section{Research Projects}
 
-\projectheading{AuraForge: Secure Coding-Agent Evaluation and Training}{Jun. 2026 -- Present}
+\projectheading{AuraForge: Beyond Human-Written Tests for Training Secure Vibe Coding Agents}{Jun. 2026 -- Present}
 \affiliation{Li Lab}
 \begin{itemize}
-    \item \textbf{Research objective:} Evaluate repository-level patches with functional and security tests; investigate \textbf{safety monitors} that identify execution risks and guide agent decisions to improve security while preserving functional correctness.
-    \item \textbf{Contribution:} Built a task-construction pipeline that extracts vulnerability-fixing commits from public GitHub Security Advisories (GHSAs) and converts them into repository-level tasks with functional and security tests for \textbf{joint evaluation of correctness and patch security}.
+    \item \textbf{Research objective:} Develop scalable executable supervision for training coding agents to satisfy \textbf{implicit security requirements}, evaluating generated patches against both functional behavior and vulnerability-specific security properties.
+    \item \textbf{Task construction:} Led the \textbf{JavaScript/TypeScript task-construction pipeline} for converting real-world vulnerability fixes into executable coding-agent tasks. Designed \textbf{language-aware feature masking} to remove vulnerable implementations while preserving declarations, exports, type signatures, and interfaces for independent reimplementation.
+    \item \textbf{Execution infrastructure and scale:} Reconstructed \textbf{repository-specific Node.js environments}, including runtime, package-manager, workspace, dependency, and build configurations. Developed \textbf{test adapters that unify heterogeneous JS/TS test runners} for consistent functional and security validation across repository states. Processed \textbf{863 curated JS/TS candidates into 229 task instances} for secure-agent evaluation and training.
 \end{itemize}
 
 \projectsep
@@ -151,25 +152,26 @@ Research Intern, advised by Linchao Zhu
 \projectheading{SeekJudge: Reward Modeling for Computer-Use Agents}{Mar. 2026 -- May 2026}
 \affiliation{ZJU Scaling Logger (ZJUSCL)}
 \begin{itemize}
-    \item \textbf{Research problem:} Assess long-horizon GUI task completion to provide model-based rewards for agent RL. The project distills multi-agent judging into a \textbf{9B judge model} that matches or surpasses rule-based rewards in online RL.
-    \item \textbf{Contribution:} Developed the Condense--Ground--Seek--Analyze judging pipeline, using an \textbf{iterative Seek--Analyze loop} to gather evidence from long screenshot and action sequences and determine task completion.
-    \item \textbf{System implementation:} Built the trajectory-processing and \textbf{HTTP reward-serving pipeline}, supporting offline batch evaluation and online RL.
+    \item \textbf{Research objective:} Developed model-based rewards for long-horizon computer-use agents, enabling online RL without task-specific rule-based verifiers.
+    \item \textbf{Method:} Co-developed the \textbf{Condense--Ground--Seek--Analyze} framework, compressing long screenshot--action trajectories into semantic timelines, grounding low-level actions, and iteratively localizing and inspecting decisive visual evidence through a Seek--Analyze loop. The resulting multi-agent judging process was distilled into a unified \textbf{9B judge model}.
 \end{itemize}
 
 \projectsep
 
-\projectheading{TradeActor: Multimodal Stock Forecasting and Portfolio Learning}{Mar. 2026 -- May 2026}
+\projectheading{TradeActor: Multimodal Market Reasoning for Portfolio Allocation}{Mar. 2026 -- May 2026}
 \begin{itemize}
-    \item Combined stock charts, numerical data, and news to generate and evaluate \textbf{LLM-based trading signals} for DOW-20; trained a \textbf{Qwen-based portfolio policy} with return and transaction-cost objectives.
-    \item Integrated the policy into \textbf{StockBench} for daily allocation decisions and end-to-end portfolio backtesting.
+    \item Developed a \textbf{multimodal trading framework} that combines stock-price and technical-indicator charts with market context, using a \textbf{frozen vision-language model} to extract semantic signals for downstream portfolio decisions.
+    \item Designed a lightweight \textbf{Qwen-0.6B portfolio actor} that encodes market context into a designated \textbf{forecast token} and projects its final hidden state through an \textbf{MLP action head} into continuous portfolio allocations.
+    \item Optimized the policy for \textbf{portfolio returns under transaction-cost penalties} and evaluated daily allocation decisions through \textbf{end-to-end backtesting on StockBench}.
 \end{itemize}
 
 \projectsep
 
 \projectheading{TimeThinkingLLM: Multimodal Time-Series Reasoning}{Sep. 2025 -- Jan. 2026}
 \begin{itemize}
-    \item Designed a \textbf{temporal encoder} and embedding interface connecting continuous time-series signals with \textbf{Qwen-3} for language-model reasoning.
-    \item Trained and evaluated the model with \textbf{GRPO} on time-series reasoning benchmarks.
+    \item Developed a \textbf{multimodal framework} that aligns \textbf{continuous time-series signals} with the \textbf{representation space of Qwen-3}, enabling a pretrained language model to directly interpret temporal data.
+    \item Designed a \textbf{temporal encoder} and \textbf{projection mechanism} to transform time-series signals into representations compatible with the LLM's \textbf{semantic embedding space}.
+    \item Applied \textbf{GRPO-based reinforcement learning} to train the model to \textbf{reason over temporal signals}, and evaluated its temporal reasoning capabilities on \textbf{time-series benchmarks}.
 \end{itemize}
 
 \end{document}
